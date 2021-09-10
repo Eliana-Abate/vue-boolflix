@@ -2,7 +2,6 @@
   <header>
     <h1>Boolflix</h1>
     <Search @inputSearch="getSearchTerm" />
-    <h1>Stampa prop searchText: {{ searchText }}</h1>
   </header>
 </template>
 
