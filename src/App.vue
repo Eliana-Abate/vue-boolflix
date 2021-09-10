@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <Header />
+    <Header @searchedFilm="getFilmApi" />
     <main>
-      <Films @searchedFilm="getFilmApi" />
-      <h2>Stampa prop query:{{ query }}</h2>
+      <Films />
     </main>
   </div>
 </template>
@@ -21,7 +20,7 @@ export default {
   data() {
     return {
       movies: [],
-      query: "",
+      series: [],
       api: {
         baseUri: "https://api.themoviedb.org/3/search/",
         key: "ebe88613f786f09a75e3890c12c5547a",
@@ -29,22 +28,35 @@ export default {
     };
   },
   methods: {
-    getFilmApi(film) {
-      this.movie.original_title = film;
-      this.query = film;
-    },
-  },
-  created() {
-    axios
-      .get(
-        `${this.api.baseUri}movie/?api_key=${this.api.key}&query=${this.query}`
-      )
-      .then((res) => {
-        const response = res.data.results;
-        console.log(response);
+    getFilmApi(query) {
+      console.log(query);
+      axios
+        .get(
+          this.api.baseUri +
+            "movie/?api_key=" +
+            this.api.key +
+            "&query=" +
+            query
+        )
 
-        this.movies = response;
-      });
+        .then((res) => {
+          const response = res.data.results;
+          console.log(res.data);
+
+          this.movies = response;
+        });
+      axios
+        .get(
+          this.api.baseUri + "tv/?api_key=" + this.api.key + "&query=" + query
+        )
+
+        .then((res) => {
+          const response = res.data.results;
+          console.log(res.data);
+
+          this.series = response;
+        });
+    },
   },
 };
 </script>
