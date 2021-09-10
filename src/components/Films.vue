@@ -2,7 +2,9 @@
   <section>
     <div>Qui appariranno film e serie</div>
 
-    <FilmCard :arrayFromFather="arrayMovies" />
+    <FilmCard :arrayFromFather="arrayMovies" :typeFilm="listFilm" />
+    <hr />
+    <FilmCard :arrayFromFather="arrayMovies" :typeFilm="listSeries" />
   </section>
 </template>
 
@@ -12,12 +14,16 @@ export default {
   name: "Films",
   props: {
     arrayMovies: Array,
+    arraySeries: Array,
   },
   components: {
     FilmCard,
   },
   data() {
-    return {};
+    return {
+      listFilm: "film",
+      listSeries: "series",
+    };
   },
   methods: {},
 };

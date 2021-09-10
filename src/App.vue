@@ -2,7 +2,7 @@
   <div id="app">
     <Header @searchedFilm="getFilmApi" />
     <main>
-      <Films :arrayMovies="movies" />
+      <Films :arrayMovies="movies" :arraySeries="series" />
     </main>
   </div>
 </template>
@@ -62,4 +62,5 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./assets/scss/style.scss";
 </style>

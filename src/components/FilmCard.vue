@@ -1,12 +1,33 @@
 <template>
   <div class="card">
-    <ul>
+    <ul v-if="typeFilm == 'film'">
       <li v-for="(item, index) in arrayFromFather" :key="index">
         <p>
           Titolo: <span>{{ item.title }}</span>
         </p>
         <p>
           Titolo originale: <span>{{ item.original_title }}</span>
+        </p>
+        <p>
+          <img
+            v-if="languages.includes(item.original_language)"
+            :src="getFlag(item.original_language)"
+            :alt="item.original_language"
+          />
+          <span v-else>Lingua: {{ item.original_language }}</span>
+        </p>
+        <p>
+          Voto: <span>{{ item.vote_average }}</span>
+        </p>
+      </li>
+    </ul>
+    <ul v-else>
+      <li v-for="(item, index) in arrayFromFather" :key="index">
+        <p>
+          Titolo: <span>{{ item.title }}</span>
+        </p>
+        <p>
+          Titolo originale: <span>{{ item.original_name }}</span>
         </p>
         <p>
           Lingua: <span>{{ item.original_language }}</span>
@@ -22,7 +43,17 @@
 <script>
 export default {
   name: "FilmCard",
-  props: ["arrayFromFather"],
+  props: ["arrayFromFather", "typeFilm"],
+  data() {
+    return {
+      languages: ["en", "it"],
+    };
+  },
+  methods: {
+    getFlag(lang) {
+      return require(`@/assets/images/${lang}.png`);
+    },
+  },
 };
 </script>
 
