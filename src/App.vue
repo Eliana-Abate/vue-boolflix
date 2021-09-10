@@ -2,7 +2,7 @@
   <div id="app">
     <Header @searchedFilm="getFilmApi" />
     <main>
-      <Films />
+      <Films :arrayFilm="movies" />
     </main>
   </div>
 </template>
