@@ -2,7 +2,7 @@
   <section>
     <div>Qui appariranno film e serie</div>
 
-    <FilmCard :allMovies="arrayMovies" />
+    <FilmCard :arrayFromFather="arrayMovies" />
   </section>
 </template>
 
@@ -10,9 +10,14 @@
 import FilmCard from "@/components/FilmCard.vue";
 export default {
   name: "Films",
-  props: ["arrayMovies"],
+  props: {
+    arrayMovies: Array,
+  },
   components: {
     FilmCard,
+  },
+  data() {
+    return {};
   },
   methods: {},
 };

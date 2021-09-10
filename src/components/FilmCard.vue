@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <ul>
-      <li v-for="(item, index) in allMovies" :key="index">
+      <li v-for="(item, index) in arrayFromFather" :key="index">
         {{ item.id }}
       </li>
     </ul>
@@ -11,7 +11,7 @@
 <script>
 export default {
   name: "FilmCard",
-  props: "allMovies",
+  props: ["arrayFromFather"],
 };
 </script>
 
