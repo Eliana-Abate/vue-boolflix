@@ -1,7 +1,7 @@
 <template>
   <section>
-    <input type="text" v-model="searchTerm" />
-    <button>Cerca</button>
+    <input type="text" v-model="inputText" />
+    <button @click="$emit('inputSearch', inputText)">Cerca</button>
   </section>
 </template>
 
@@ -10,10 +10,9 @@ export default {
   name: "Search",
   data() {
     return {
-      searchTerm: "",
+      inputText: "",
     };
   },
-
   methods: {},
 };
 </script>
