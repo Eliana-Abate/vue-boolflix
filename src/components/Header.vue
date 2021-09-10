@@ -2,7 +2,7 @@
   <header>
     <h1>Boolflix</h1>
     <Search @inputSearch="getSearchTerm" />
-    <h1>{{ searchText }}</h1>
+    <h1>Stampa prop searchText: {{ searchText }}</h1>
   </header>
 </template>
 
@@ -21,6 +21,7 @@ export default {
   methods: {
     getSearchTerm(search) {
       this.searchText = search;
+      this.$emit("searchedFilm", this.searchText);
     },
   },
 };
