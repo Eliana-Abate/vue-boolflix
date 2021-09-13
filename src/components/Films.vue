@@ -8,7 +8,7 @@
     <hr />
     <div>
       <h3>Serie Tv</h3>
-      <FilmCard :arrayFromFather="arrayMovies" :typeFilm="listSeries" />
+      <FilmCard :arrayFromFather="arraySeries" :typeFilm="listSeries" />
     </div>
   </section>
 </template>
