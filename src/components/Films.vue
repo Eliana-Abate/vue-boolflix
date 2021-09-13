@@ -1,14 +1,13 @@
 <template>
   <section class="container">
     <div>
-      <h3>Movies</h3>
+      <h3 class="py-3">Movies</h3>
 
       <FilmCard :arrayFromFather="arrayMovies" :typeFilm="listFilm" />
     </div>
 
-    <hr />
-    <div>
-      <h3>Serie Tv</h3>
+    <div class="pt-5">
+      <h3 class="py-3">Serie Tv</h3>
 
       <FilmCard :arrayFromFather="arraySeries" :typeFilm="listSeries" />
     </div>

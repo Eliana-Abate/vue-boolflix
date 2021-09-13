@@ -4,40 +4,40 @@
       <div class="col-4" v-for="(item, id) in arrayFromFather" :key="id">
         <div class="bool-card">
           <img :src="getCover(item.poster_path)" :alt="item.original_title" />
+
+          <!-- Hover effect -->
+          <div class="hover-effect">
+            <p>Titolo: {{ item.title }}</p>
+            <p>Titolo originale: {{ item.original_title }}</p>
+
+            <p>
+              <img
+                class="flag"
+                v-if="languages.includes(item.original_language)"
+                :src="getFlag(item.original_language)"
+                :alt="item.original_language"
+              />
+              <span class="other-lang" v-else
+                >Lingua: {{ item.original_language }}</span
+              >
+            </p>
+
+            <p>
+              Voto:
+              <span v-for="n in 5" :key="n">
+                <i
+                  v-if="n <= getVoteStars(item.vote_average)"
+                  class="fas fa-star"
+                ></i>
+                <i v-else class="far fa-star"></i>
+              </span>
+            </p>
+
+            <p>{{ item.overview }}</p>
+          </div>
         </div>
       </div>
     </div>
-
-    <!--
-      <li v-for="(item, id) in arrayFromFather" :key="id">
-        <p>
-          Titolo: <span>{{ item.title }}</span>
-        </p>
-        <p>
-          Titolo originale: <span>{{ item.original_title }}</span>
-        </p>
-        <p>
-          <img
-            v-if="languages.includes(item.original_language)"
-            :src="getFlag(item.original_language)"
-            :alt="item.original_language"
-          />
-          <span v-else>Lingua: {{ item.original_language }}</span>
-        </p>
-        <p>
-          Voto: {{ getVoteStars(item.vote_average) }}
-          <span v-for="n in 5" :key="n">
-            <i
-              v-if="n <= getVoteStars(item.vote_average)"
-              class="fas fa-star"
-            ></i>
-            <i v-else class="far fa-star"></i>
-          </span>
-        </p>
-        <p>
-          <img :src="getCover(item.poster_path)" :alt="item.original_title" />
-        </p>
-      </li> -->
 
     <div v-else class="row g-5">
       <div class="col-4" v-for="(item, id) in arrayFromFather" :key="id">
@@ -112,22 +112,44 @@ export default {
 
 <style lang='scss' scoped>
 .bool-card {
-  background-color: #303030;
   border: 3px solid white;
   height: 600px;
 }
+
 img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
-p {
-  font-weight: bold;
-  color: dodgerblue;
+
+.hover-effect {
+  height: 100%;
+  padding: 30px;
+  background-color: black;
+  color: white;
+  font-size: 1.1em;
+  overflow-y: auto;
+  display: none;
+  .flag {
+    width: 30px;
+    height: 20px;
+  }
+  .other-lang {
+    color: red;
+  }
 }
+
 span {
   font-weight: normal;
-  color: black;
+  color: rgb(255, 208, 0);
+}
+
+.bool-card:hover > img {
+  display: none;
+}
+
+.bool-card:hover > .hover-effect {
+  display: block;
 }
 </style>
