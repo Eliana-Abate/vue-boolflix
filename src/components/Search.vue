@@ -5,6 +5,7 @@
       type="text"
       v-model="inputText"
       placeholder="Film, serie tv..."
+      @keyup.enter="$emit('inputSearch', inputText)"
     />
     <button class="px-3" @click="$emit('inputSearch', inputText)">Cerca</button>
   </section>
