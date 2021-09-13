@@ -19,6 +19,9 @@
         <p>
           Voto: <span>{{ item.vote_average }}</span>
         </p>
+        <p>
+          <img :src="getCover(item.poster_path)" :alt="item.original_title" />
+        </p>
       </li>
     </ul>
     <ul v-else>
@@ -30,10 +33,18 @@
           Titolo originale: <span>{{ item.original_name }}</span>
         </p>
         <p>
-          Lingua: <span>{{ item.original_language }}</span>
+          <img
+            v-if="languages.includes(item.original_language)"
+            :src="getFlag(item.original_language)"
+            :alt="item.original_language"
+          />
+          <span v-else>Lingua: {{ item.original_language }}</span>
         </p>
         <p>
           Voto: <span>{{ item.vote_average }}</span>
+        </p>
+        <p>
+          <img :src="getCover(item.poster_path)" :alt="item.original_name" />
         </p>
       </li>
     </ul>
@@ -47,11 +58,16 @@ export default {
   data() {
     return {
       languages: ["en", "it"],
+      coverBasePath: "https://image.tmdb.org/t/p/w342",
     };
   },
   methods: {
     getFlag(lang) {
       return require(`@/assets/images/${lang}.png`);
+    },
+
+    getCover(cover) {
+      return this.coverBasePath + cover;
     },
   },
 };
