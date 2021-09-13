@@ -1,10 +1,10 @@
 <template>
   <section>
     <input
-      class="input-style"
+      class="input-style px-2"
       type="text"
       v-model="inputText"
-      placeholder=" Film, serie tv..."
+      placeholder="Film, serie tv..."
     />
     <button class="px-3" @click="$emit('inputSearch', inputText)">Cerca</button>
   </section>
