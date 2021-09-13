@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>Boolflix</h1>
+    <h1>BOOLFLIX</h1>
     <Search @inputSearch="getSearchTerm" />
   </header>
 </template>
@@ -26,5 +26,11 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+header {
+  height: 100px;
+  background-color: black;
+  font-family: "Bebas Neue", cursive;
+  color: #e50914;
+}
 </style>
