@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @searchedFilm="getFilmApi" />
-    <main>
+    <main class="py-5">
       <Films :arrayMovies="movies" :arraySeries="series" />
     </main>
   </div>
