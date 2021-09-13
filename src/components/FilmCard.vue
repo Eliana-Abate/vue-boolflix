@@ -7,8 +7,11 @@
 
           <!-- Hover effect -->
           <div class="hover-effect">
-            <p>Titolo: {{ item.title }}</p>
-            <p>Titolo originale: {{ item.original_title }}</p>
+            <p v-if="!item.title">Titolo: ---</p>
+            <p v-else>Titolo: {{ item.title }}</p>
+
+            <p v-if="!item.original_title">Titolo originale: ---</p>
+            <p v-else>Titolo originale: {{ item.original_title }}</p>
 
             <p>
               <img
@@ -46,8 +49,11 @@
 
           <!-- Hover effect -->
           <div class="hover-effect">
-            <p>Titolo: {{ item.title }}</p>
-            <p>Titolo originale: {{ item.original_name }}</p>
+            <p v-if="!item.title">Titolo: ---</p>
+            <p v-else>Titolo: {{ item.title }}</p>
+
+            <p v-if="!item.original_name">Titolo originale: ---</p>
+            <p v-else>Titolo originale: {{ item.original_name }}</p>
 
             <p>
               <img
