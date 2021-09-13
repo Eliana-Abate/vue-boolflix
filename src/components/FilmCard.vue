@@ -1,7 +1,14 @@
 <template>
   <div class="card">
-    <ul v-if="typeFilm == 'film'">
-      <li v-for="(item, index) in arrayFromFather" :key="index">
+    <div v-if="typeFilm == 'film'">
+      <div class="row">
+        <div class="col-4" v-for="(item, id) in arrayFromFather" :key="id">
+          <img :src="getCover(item.poster_path)" :alt="item.original_title" />
+        </div>
+      </div>
+
+      <!--
+      <li v-for="(item, id) in arrayFromFather" :key="id">
         <p>
           Titolo: <span>{{ item.title }}</span>
         </p>
@@ -29,10 +36,10 @@
         <p>
           <img :src="getCover(item.poster_path)" :alt="item.original_title" />
         </p>
-      </li>
-    </ul>
+      </li> -->
+    </div>
     <ul v-else>
-      <li v-for="(item, index) in arrayFromFather" :key="index">
+      <li v-for="(item, id) in arrayFromFather" :key="id">
         <p>
           Titolo: <span>{{ item.title }}</span>
         </p>
@@ -97,7 +104,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
 p {
   font-weight: bold;
   color: dodgerblue;

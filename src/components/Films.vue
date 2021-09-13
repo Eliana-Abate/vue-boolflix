@@ -1,10 +1,15 @@
 <template>
-  <section>
-    <div>Qui appariranno film e serie</div>
+  <section class="container">
+    <div>
+      <h3>Movies</h3>
+      <FilmCard :arrayFromFather="arrayMovies" :typeFilm="listFilm" />
+    </div>
 
-    <FilmCard :arrayFromFather="arrayMovies" :typeFilm="listFilm" />
     <hr />
-    <FilmCard :arrayFromFather="arrayMovies" :typeFilm="listSeries" />
+    <div>
+      <h3>Serie Tv</h3>
+      <FilmCard :arrayFromFather="arrayMovies" :typeFilm="listSeries" />
+    </div>
   </section>
 </template>
 
@@ -29,5 +34,5 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 </style>
