@@ -55,6 +55,7 @@ export default {
     return {
       languages: ["en", "it"],
       coverBasePath: "https://image.tmdb.org/t/p/w342",
+      noCover: "https://www.altavod.com/assets/images/poster-placeholder.png",
     };
   },
   methods: {
@@ -63,7 +64,11 @@ export default {
     },
 
     getCover(cover) {
-      return this.coverBasePath + cover;
+      if (cover) {
+        return this.coverBasePath + cover;
+      } else {
+        return this.noCover;
+      }
     },
 
     getVoteStars(vote) {
