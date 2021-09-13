@@ -43,39 +43,41 @@
       <div class="col-4" v-for="(item, id) in arrayFromFather" :key="id">
         <div class="bool-card">
           <img :src="getCover(item.poster_path)" :alt="item.original_name" />
+
+          <!-- Hover effect -->
+          <div class="hover-effect">
+            <p>Titolo: {{ item.title }}</p>
+            <p>Titolo originale: {{ item.original_name }}</p>
+
+            <p>
+              <img
+                class="flag"
+                v-if="languages.includes(item.original_language)"
+                :src="getFlag(item.original_language)"
+                :alt="item.original_language"
+              />
+              <span class="other-lang" v-else
+                >Lingua: {{ item.original_language }}</span
+              >
+            </p>
+
+            <p>
+              Voto:
+              <span v-for="n in 5" :key="n">
+                <i
+                  v-if="n <= getVoteStars(item.vote_average)"
+                  class="fas fa-star"
+                ></i>
+                <i v-else class="far fa-star"></i>
+              </span>
+            </p>
+
+            <p>{{ item.overview }}</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  <!--<li v-for="(item, id) in arrayFromFather" :key="id">
-        <p>
-          Titolo: <span>{{ item.title }}</span>
-        </p>
-        <p>
-          Titolo originale: <span>{{ item.original_name }}</span>
-        </p>
-        <p>
-          <img
-            v-if="languages.includes(item.original_language)"
-            :src="getFlag(item.original_language)"
-            :alt="item.original_language"
-          />
-          <span v-else>Lingua: {{ item.original_language }}</span>
-        </p>
-        <p>
-          Voto: {{ getVoteStars(item.vote_average) }}
-          <span v-for="n in 5" :key="n">
-            <i
-              v-if="n <= getVoteStars(item.vote_average)"
-              class="fas fa-star"
-            ></i>
-            <i v-else class="far fa-star"></i>
-          </span>
-        </p>
-        <p>
-          <img :src="getCover(item.poster_path)" :alt="item.original_name" />
-        </p>
-      </li> -->
 </template>
 
 <script>
