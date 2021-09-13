@@ -22,7 +22,8 @@ export default {
       movies: [],
       series: [],
       api: {
-        baseUri: "https://api.themoviedb.org/3/search/",
+        baseUri: "https://api.themoviedb.org/3/",
+        endpoint: "search/",
         key: "ebe88613f786f09a75e3890c12c5547a",
       },
     };
@@ -33,6 +34,7 @@ export default {
       axios
         .get(
           this.api.baseUri +
+            this.api.endpoint +
             "movie/?api_key=" +
             this.api.key +
             "&query=" +
@@ -47,7 +49,12 @@ export default {
         });
       axios
         .get(
-          this.api.baseUri + "tv/?api_key=" + this.api.key + "&query=" + query
+          this.api.baseUri +
+            this.api.endpoint +
+            "tv/?api_key=" +
+            this.api.key +
+            "&query=" +
+            query
         )
 
         .then((res) => {
