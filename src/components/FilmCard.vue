@@ -16,7 +16,16 @@
           />
           <span v-else>Lingua: {{ item.original_language }}</span>
         </p>
-        <p>Voto: {{ getVoteStars(item.vote_average) }}</p>
+        <p>
+          Voto: {{ getVoteStars(item.vote_average) }}
+          <span v-for="n in 5" :key="n">
+            <i
+              v-if="n <= getVoteStars(item.vote_average)"
+              class="fas fa-star"
+            ></i>
+            <i v-else class="far fa-star"></i>
+          </span>
+        </p>
         <p>
           <img :src="getCover(item.poster_path)" :alt="item.original_title" />
         </p>
@@ -38,7 +47,16 @@
           />
           <span v-else>Lingua: {{ item.original_language }}</span>
         </p>
-        <p>Voto: {{ getVoteStars(item.vote_average) }}</p>
+        <p>
+          Voto: {{ getVoteStars(item.vote_average) }}
+          <span v-for="n in 5" :key="n">
+            <i
+              v-if="n <= getVoteStars(item.vote_average)"
+              class="fas fa-star"
+            ></i>
+            <i v-else class="far fa-star"></i>
+          </span>
+        </p>
         <p>
           <img :src="getCover(item.poster_path)" :alt="item.original_name" />
         </p>
@@ -56,8 +74,6 @@ export default {
       languages: ["en", "it"],
       coverBasePath: "https://image.tmdb.org/t/p/w342",
       noCover: "https://www.altavod.com/assets/images/poster-placeholder.png",
-      fullStar: ' `<span><i class="fas fa-star"></i></span>`',
-      emptyStar: ' `<span><i class="far fa-star"></i></span> `',
     };
   },
   methods: {
@@ -75,30 +91,7 @@ export default {
 
     getVoteStars(vote) {
       const stars = Math.ceil(vote / 2);
-
-      if (stars === 0) {
-        return this.emptyStar.repeat(5);
-      }
-
-      if (stars === 1) {
-        return this.fullStar.repeat(1) + this.emptyStar.repeat(4);
-      }
-
-      if (stars === 2) {
-        return this.fullStar.repeat(2) + this.emptyStar.repeat(3);
-      }
-
-      if (stars === 3) {
-        return this.fullStar.repeat(3) + this.emptyStar.repeat(2);
-      }
-
-      if (stars === 4) {
-        return this.fullStar.repeat(4) + this.emptyStar.repeat(1);
-      }
-
-      if (stars === 5) {
-        return this.fullStar.repeat(5) + this.emptyStar.repeat(0);
-      }
+      return stars;
     },
   },
 };
