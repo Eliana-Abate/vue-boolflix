@@ -16,9 +16,7 @@
           />
           <span v-else>Lingua: {{ item.original_language }}</span>
         </p>
-        <p>
-          Voto: <span>{{ item.vote_average }}</span>
-        </p>
+        <p v-text="getVoteStars(item.vote_average)"></p>
         <p>
           <img :src="getCover(item.poster_path)" :alt="item.original_title" />
         </p>
@@ -40,9 +38,7 @@
           />
           <span v-else>Lingua: {{ item.original_language }}</span>
         </p>
-        <p>
-          Voto: <span>{{ item.vote_average }}</span>
-        </p>
+        <p v-text="getVoteStars(item.vote_average)"></p>
         <p>
           <img :src="getCover(item.poster_path)" :alt="item.original_name" />
         </p>
@@ -68,6 +64,11 @@ export default {
 
     getCover(cover) {
       return this.coverBasePath + cover;
+    },
+
+    getVoteStars(vote) {
+      const stars = Math.ceil(vote / 2);
+      return `Voto: ${stars}`;
     },
   },
 };
