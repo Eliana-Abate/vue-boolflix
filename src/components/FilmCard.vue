@@ -1,13 +1,12 @@
 <template>
   <div class="card">
-    <div v-if="typeFilm == 'film'">
-      <div class="row">
-        <div class="col-4" v-for="(item, id) in arrayFromFather" :key="id">
-          <img :src="getCover(item.poster_path)" :alt="item.original_title" />
-        </div>
+    <div class="row" v-if="typeFilm == 'film'">
+      <div class="col-4" v-for="(item, id) in arrayFromFather" :key="id">
+        <img :src="getCover(item.poster_path)" :alt="item.original_title" />
       </div>
+    </div>
 
-      <!--
+    <!--
       <li v-for="(item, id) in arrayFromFather" :key="id">
         <p>
           Titolo: <span>{{ item.title }}</span>
@@ -37,9 +36,14 @@
           <img :src="getCover(item.poster_path)" :alt="item.original_title" />
         </p>
       </li> -->
+
+    <div v-else class="row">
+      <div class="col-4" v-for="(item, id) in arrayFromFather" :key="id">
+        <img :src="getCover(item.poster_path)" :alt="item.original_name" />
+      </div>
     </div>
-    <ul v-else>
-      <li v-for="(item, id) in arrayFromFather" :key="id">
+  </div>
+  <!--<li v-for="(item, id) in arrayFromFather" :key="id">
         <p>
           Titolo: <span>{{ item.title }}</span>
         </p>
@@ -67,9 +71,7 @@
         <p>
           <img :src="getCover(item.poster_path)" :alt="item.original_name" />
         </p>
-      </li>
-    </ul>
-  </div>
+      </li> -->
 </template>
 
 <script>
@@ -105,6 +107,11 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.card {
+  img {
+    object-fit: cover;
+  }
+}
 p {
   font-weight: bold;
   color: dodgerblue;

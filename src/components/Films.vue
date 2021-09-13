@@ -2,13 +2,17 @@
   <section class="container">
     <div>
       <h3>Movies</h3>
-      <FilmCard :arrayFromFather="arrayMovies" :typeFilm="listFilm" />
+      <div>
+        <FilmCard :arrayFromFather="arrayMovies" :typeFilm="listFilm" />
+      </div>
     </div>
 
     <hr />
     <div>
       <h3>Serie Tv</h3>
-      <FilmCard :arrayFromFather="arraySeries" :typeFilm="listSeries" />
+      <div>
+        <FilmCard :arrayFromFather="arraySeries" :typeFilm="listSeries" />
+      </div>
     </div>
   </section>
 </template>

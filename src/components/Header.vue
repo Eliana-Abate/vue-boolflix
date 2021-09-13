@@ -1,10 +1,10 @@
 <template>
-  <header class="px-5 row align-items-center">
-    <div class="col-6">
-      <h1 class="display-5">BOOLFLIX</h1>
-    </div>
-    <div class="col-6">
-      <div class="d-flex justify-content-end">
+  <header class="px-5">
+    <div class="row h-100">
+      <div class="col-6 d-flex align-items-center">
+        <h1 class="display-5">BOOLFLIX</h1>
+      </div>
+      <div class="col-6 d-flex align-items-center justify-content-end">
         <Search @inputSearch="getSearchTerm" />
       </div>
     </div>
