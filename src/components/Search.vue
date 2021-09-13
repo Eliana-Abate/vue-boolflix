@@ -1,7 +1,12 @@
 <template>
   <section>
-    <input type="text" v-model="inputText" />
-    <button @click="$emit('inputSearch', inputText)">Cerca</button>
+    <input
+      class="input-style"
+      type="text"
+      v-model="inputText"
+      placeholder=" Film, serie tv..."
+    />
+    <button class="px-3" @click="$emit('inputSearch', inputText)">Cerca</button>
   </section>
 </template>
 
@@ -18,4 +23,13 @@ export default {
 </script>
 
 <style>
+.input-style {
+  color: gray;
+  font-family: sans-serif;
+}
+
+button {
+  background-color: #e50914;
+  color: white;
+}
 </style>
